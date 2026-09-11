@@ -6,6 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="styles/style.css">
+    <script src="./js/index.js" defer></script>
     <title>home</title>
 </head>
 <body class="bg-white">
@@ -17,17 +18,17 @@
             <nav class="hidden md:flex items-center gap-10 lg:gap-20">
 
                 <ul class="flex items-center gap-10">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Shop</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-4">
 
                     <input type="search" placeholder="Search" class="w-40 rounded-full bg-[#EAEAEA] px-5 py-3 outline-none">
 
-                    <a href="" aria-label="Shopping cart">
+                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -43,6 +44,7 @@
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
+                        <span class="cart-count font-semibold text-xs text-black"></span>
                     </a>
 
                 </div>
@@ -132,9 +134,6 @@
 
     </header>
 
-    <div class="md:hidden">
-
-    </div>
     <main>
        <section class="relative">
             <img src="./assets/hero-section.jpg" alt="" class="w-full h-[420px] md:h-[600px] lg:h-[90vh] object-cover">
@@ -145,8 +144,8 @@
                         <p class="text-white/90 text-sm md:text-base">Discover carefully selected products designed for modern living. Embracing timeless minimalist silhouettes and exceptional materials.</p>
 
                         <div class="flex flex-col py-5 gap-3 sm:flex-row">
-                            <button type="button" class="bg-[#9C6D53] text-white text-xs font-semibold rounded-lg px-8 py-4">Shop Now</button>
-                            <button type="button" class="bg-transparent text-white border border-white rounded-lg text-xs font-semibold px-8 py-4">Explore Collection</button>
+                            <a href="./shop.html"><button type="button" class="bg-[#9C6D53] border border-[#9C6D53] text-white text-xs font-semibold rounded-lg px-8 py-4 cursor-pointer transition-all duration-200 hover:border-white hover:bg-transparent">Shop Now</button></a> 
+                            <a href="./shop.html"><button type="button" class="bg-transparent text-white border border-white rounded-lg text-xs font-semibold px-8 py-4 cursor-pointer transition-all duration-200 hover:bg-[#9C6D53] hover:border-[#9C6D53]">Explore Collection</button></a>
                         </div>
                     </div>
                 </div>
@@ -156,46 +155,7 @@
         <section class="px-4 pt-12 md:px-10 lg:px-30">
             <span class="text-[#9C6D53] text-xs font-bold">CURATED PICKS</span>
             <h2 class="text-2xl font-extrabold pb-9">Featured Products</h2>
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <div class="bg-white border-2 border-[#EAEAEA] rounded-2xl">
-                    <img src="./assets/product-photo-2.jpg" alt="" class="rounded-t-2xl w-full md:aspect-5/4 object-cover">
-                    <div class="m-3 flex gap-1 flex-col">
-                        <p class="font-semibold text-[10px] text-gray-400">Tops</p>
-                        <p class="font-semibold text-[13px]">Classic hooideis jfetak</p>
-                        <p class="font-bold text-[13px]">$23.00<span></span></p>
-                        <button class="bg-black text-white w-full text-xs font-bold h-9 rounded-md">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="bg-white border-2 border-[#EAEAEA] rounded-2xl">
-                    <img src="./assets/product-photo-2.jpg" alt="" class="rounded-t-2xl w-full md:aspect-5/4 object-cover">
-                    <div class="m-3 flex gap-1 flex-col">
-                        <p class="font-semibold text-[10px] text-gray-400">Tops</p>
-                        <p class="font-semibold text-[13px]">Classic hooideis jfetak</p>
-                        <p class="font-bold text-[13px]">$23.00<span></span></p>
-                        <button class="bg-black text-white w-full text-xs font-bold h-9 rounded-md">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="bg-white border-2 border-[#EAEAEA] rounded-2xl">
-                    <img src="./assets/product-photo-2.jpg" alt="" class="rounded-t-2xl w-full md:aspect-5/4 object-cover">
-                    <div class="m-3 flex gap-1 flex-col">
-                        <p class="font-semibold text-[10px] text-gray-400">Tops</p>
-                        <p class="font-semibold text-[13px]">Classic hooideis jfetak</p>
-                        <p class="font-bold text-[13px]">$23.00<span></span></p>
-                        <button class="bg-black text-white w-full text-xs font-bold h-9 rounded-md">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="border-2 border-[#EAEAEA] rounded-2xl">
-                    <img src="./assets/product-photo-1.jpg" alt="" class="rounded-t-2xl w-full md:aspect-5/4 object-cover">
-                    <div class="m-3 flex gap-1 flex-col">
-                        <p class="font-semibold text-[10px] text-gray-400">Tops</p>
-                        <p class="font-semibold text-[13px]">Classic hooideis jfetak</p>
-                        <p class="font-bold text-[13px]">$23.00<span></span></p>
-                        <button class="bg-black text-white w-full text-xs font-bold h-9 rounded-md">Add to Cart</button>
-                    </div>
-                </div>
+            <div class="featured-product grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
 
             </div>
             <a href="" class="flex justify-center text-xs my-6 underline font-bold">View All Items</a>
@@ -205,39 +165,40 @@
             <span class="text-[#9C6D53] text-xs font-bold">BROWSE BY</span>
             <h2 class="text-2xl font-extrabold pb-9">Shop Categories</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+                
                 <div class="relative overflow-hidden rounded-2xl">
                     <img src="./assets/cat-card-0.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fit" loading="lazy">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-t from-black to-transparent">
                         <h3 class="font-extrabold text-xl">Men's</h3>
                         <p class="text-xs mb-1">Structured essential staples crafted for raw utility</p>
-                        <button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] rounded-lg">Shop Category</button>
+                        <a href="./shop.html"><button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] cursor-pointer rounded-lg hover:bg-[#EAEAEA]"">Shop Category</button></a>
                     </div>
                 </div>
 
                 <div class="relative overflow-hidden rounded-2xl">
-                    <img src="./assets/cat-card-1.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fill" loading="lazy">
+                    <img src="./assets/cat-card-1.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fit" loading="lazy">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-t from-black to-transparent">
                         <h3 class="font-extrabold text-xl">Women's</h3>
                         <p class="text-xs mb-1">Flowing organic contours meeting structural precision</p>
-                        <button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] rounded-lg">Shop Category</button>
+                        <a href="./shop.html"><button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] cursor-pointer rounded-lg hover:bg-[#EAEAEA]"">Shop Category</button></a>
                     </div>
                 </div>
 
                 <div class="relative overflow-hidden rounded-2xl">
-                    <img src="./assets/cat-card-2.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fill" loading="lazy">
+                    <img src="./assets/cat-card-2.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fit" loading="lazy">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-t from-black to-transparent">
                         <h3 class="font-extrabold text-xl">Footwear</h3>
                         <p class="text-xs mb-1">Understated form with durable everyday ergonomic soles</p>
-                        <button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] rounded-lg">Shop Category</button>
+                        <a href="./shop.html"><button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] cursor-pointer rounded-lg hover:bg-[#EAEAEA]"">Shop Category</button></a>
                     </div>
                 </div>
 
                 <div class="relative overflow-hidden rounded-2xl">
-                    <img src="./assets/cat-card-3.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fill" loading="lazy">
+                    <img src="./assets/cat-card-3.jpg" alt="Men's structured jacket and trousers" class="w-full h-55 object-cover lg:h-full object-fit" loading="lazy">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-t from-black to-transparent">
                         <h3 class="font-extrabold text-xl">Accessories</h3>
                         <p class="text-xs mb-1">Premium hand-finished leather goods and minimal items</p>
-                        <button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] rounded-lg">Shop Category</button>
+                        <a href="./shop.html"><button class="bg-white text-black text-xs font-bold px-[16px] py-[8px] cursor-pointer rounded-lg hover:bg-[#EAEAEA]"">Shop Category</button></a>
                     </div>
                 </div>
             </div>
@@ -302,7 +263,7 @@
                         id=""
                         placeholder="Your email address" 
                         class="py-4 px-3 bg-[#2A2A2A] rounded-lg">
-                    <button type="submit" class="bg-[#9C6D53] py-4 px-3 rounded-lg">Subscribe</button>
+                    <button type="submit" class="bg-[#9C6D53] w-full rounded-lg md:px-3">Subscribe</button>
                 </form>
             </div>
         </div>

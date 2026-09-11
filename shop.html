@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="styles/style.css">
     <script src="./js/index.js" defer></script>
+    <script src="./js/shop.js" defer></script>
     <title>home</title>
 </head>
 <body class="bg-white">
@@ -28,7 +29,7 @@
 
                     <input type="search" placeholder="Search" class="w-40 rounded-full bg-[#EAEAEA] px-5 py-3 outline-none">
 
-                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex gap-2">
+                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -44,7 +45,7 @@
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
-                        <span class="cart-count font-bold text-black"></span>
+                        <span class="cart-count font-semibold text-xs text-black"></span>
                     </a>
 
                 </div>
@@ -134,72 +135,18 @@
 
     </header>
 
-    <main class="bg-[#F9F9FB] py-3 flex flex-col md:flex-row justify-between px-4 md:px-10 lg:px-30 gap-8 lg:gap-18">
-        <div class="md:grow">
-            <div class="flex justify-between">
-                <h2 class="font-extrabold text-2xl">Your Cart</h2>
-                <p class="cart-count font-bold"></p>
+    <main class="px-4 py-10 md:px-10 lg:px-30">
+        <div class="flex items-center justify-between flex-wrap gap-3 pb-2">
+            <div>
+                <span class="text-[#9C6D53] text-xs font-bold">FULL CATALOG</span>
+                <h1 class="text-2xl font-extrabold">Shop All</h1>
             </div>
-            <hr class="my-5">
-            <section>
-                <div class="cart-items flex flex-col gap-4">
-
-                </div>
-            </section>
-
-            <div class="py-4 px-2">
-                <a class="font-semibold text-xs underline">Continue Shopping</a>
-            </div>
+            <p class="shop-result-count text-xs text-[#8E8E93]"></p>
         </div>
 
-        <aside class="border border-[#EAEAEA] px-4 mt-4 rounded-2xl">
-            <h3 class="font-extrabold text-md py-5">Order Summary</h3>
-            <div class="flex flex-col gap-3">
-                <p class="flex justify-between text-[13px]">Subtotal <span class="products-cost font-semibold"></span></p>
-                <p class="flex justify-between text-[13px]">Shipping <span class="shipping-fee font-semibold"></span></p>
-                <p class="flex justify-between text-[13px] text-emerald-500">Discount <span class="discount font-semibold"></span></p>
-                <hr>
-                <p class="flex justify-between text-[15px] font-extrabold">Total <span class="total-price font-extrabold"></span></p>
-            </div>
+        <div class="category-filters flex gap-2 overflow-x-auto py-5" role="group" aria-label="Filter by category"></div>
 
-            <div class="flex gap-4 items-center py-5">
-                <input type="text" id="promo-code"
-                   placeholder="Enter promo code" 
-                   class="grow bg-[#F9F9FB] py-3 border border-[#8E8E93] rounded-lg px-3 text-xs text-[#8E8E93]">
-            
-            <button type="submit" id="apply-code" class="border-2 px-4 py-2 text-[13px] font-bold border-black rounded-lg cursor-pointer hover:bg-black/20">Apply</button>
-
-            </div>
-            <button type="submit" class="bg-[#9C6D53] py-4 rounded-xl text-white text-[13px] font-bold w-full">Proceed to Checkout</button>
-
-
-
-            <p class="flex justify-center items-center py-5 gap-[10px] text-[#8E8E93]">
-                <svg xmlns="http://w3.org" viewBox="0 0 40 40" width="24" height="24" style="flex-shrink: 0;">
-                    <defs>
-                    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#EAEAEA" />
-                        <stop offset="100%" stop-color="#8E8E93" />
-                    </linearGradient>
-                    </defs>
-
-                    <!-- Shield & Lock Icon Group -->
-                    <g transform="translate(0, 3)">
-                    <!-- Shield Background -->
-                    <path d="M20 0 L36 5 C36 18 28 29 20 34 C12 29 4 18 4 5 Z" fill="url(#shieldGrad)" />
-                    <!-- Padlock Body -->
-                    <rect x="13" y="14" width="14" height="11" rx="2" fill="#8E8E93" />
-                    <!-- Padlock Shackle -->
-                    <path d="M16 14 V10 C16 8 24 8 24 10 V14" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" />
-                    <!-- Keyhole -->
-                    <circle cx="20" cy="18" r="1.5" fill="white" />
-                    <path d="M19.5 19.5 H20.5 V22 H19.5 Z" fill="white" />
-                    </g>
-                </svg>
-                <span class="text-[13px]">Secure 256-bit SSL encrypted checkout</span>
-                </p>
-
-        </aside>
-    </main>    
+        <div class="shop-grid grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
+    </main>
 </body>
 </html>
