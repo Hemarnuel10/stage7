@@ -1,8 +1,9 @@
 const API_URL = 'https://fakestoreapi.com/products';
 const PROMO_KEY = "promoCode";
+const CART_STORAGE = "cart"
 function getCartItems() {
   try{
-    return JSON.parse(localStorage.getItem("cart")) || [];
+    return JSON.parse(localStorage.getItem(CART_STORAGE)) || [];
   } catch (error) {
     console.error('Error parsing cart items from localStorage:', error);
     return [];
@@ -10,7 +11,7 @@ function getCartItems() {
 }
 
 function saveCartItems(cartItems) {
-  localStorage.setItem("cart", JSON.stringify(cartItems));
+  localStorage.setItem(CART_STORAGE, JSON.stringify(cartItems));
   updateCartCountBadge()
 }
 
@@ -149,7 +150,8 @@ function displayCartItems() {
 
   if (cartContainer) {
     const cartItems = getCartItems();
-
+    const ProceedToCheckoutBtn = document.querySelector('.proceed-to-checkout');
+    const promoCodeBtn = document.querySelector('#apply-code'); 
     cartContainer.innerHTML = "";
     console.log(`Cart items to display: ${cartItems.length}`);
     if (cartItems.length === 0) {
@@ -160,21 +162,33 @@ function displayCartItems() {
           <a href="./shop.html" class="mt-2 bg-black text-white text-xs font-bold px-6 py-3 rounded-lg">Start Shopping</a>
         </div>`;
         findTotalPrice();
-        console.log('Cart is empty, displayed empty cart message.');
+      
+      
+      if (promoCodeBtn) {
+        promoCodeBtn.disabled = true;
+        promoCodeBtn.classList.add('is-disabled', 'bg-[#9C6D53]/50');
+      }
+
+      if (ProceedToCheckoutBtn) {
+        ProceedToCheckoutBtn.disabled = true;
+        ProceedToCheckoutBtn.classList.add('is-disabled', 'bg-[#9C6D53]/50');
+      }
+
+      console.log('Cart is empty, displayed empty cart message.');
     }
 
     else{
       cartItems.forEach((item, index) => {
         console.log(`Displaying item: ${item.title}, Quantity: ${item.quantity}, Price: ${item.price}`);
         const cartItem = document.createElement('div');
-        cartItem.classList.add('flex', 'items-center', 'gap-4', 'p-2', 'border-b', 'border-gray-200');
+        cartItem.classList.add('flex', 'items-center', 'gap-4');
         cartItem.innerHTML = `
           <div class="flex bg-[white] justify-between border border-[#EAEAEA] rounded-xl p-3 w-full">
             <div class="flex gap-3">
-              <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-md">
+              <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-contain self-center rounded-md">
               <div>
                 <span class="text-[10px] font-semibold text-[#8E8E93]">${item.category}</span>
-                <h3 class="text-[14px] font-bold">${item.title}</h3>
+                <h3 class="text-[14px] font-bold text-wrap">${item.title}</h3>
                 <p class="text-[11px]">Available now</p>
                 <p class="text-[14px] font-extrabold">$${Number(item.price).toFixed(2)}</p>
               </div>
@@ -251,12 +265,14 @@ function findTotalPrice() {
   const shippingEl = document.querySelector(".shipping-fee");
   const taxEl = document.querySelector(".tax");
   const totalEl = document.querySelector(".total-price");
+  const btnTotalPriceEl= document.querySelector(".btn-total-price")
 
   if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
   if (discountEl) discountEl.textContent = `-$${discount.toFixed(2)}`;
   if (shippingEl) shippingEl.textContent = `$${shipping.toFixed(2)}`;
   if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
   if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+  if (btnTotalPriceEl) btnTotalPriceEl.textContent = `($${total.toFixed(2)})`;
 
   return total;
 }

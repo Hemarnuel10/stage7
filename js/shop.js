@@ -13,6 +13,7 @@ async function fetchProducts() {
 }
 
 async function displayShopProducts() {
+    let ALL_PRODUCT;
     const filterBar = document.querySelector('.category-filters');
     const shopGrid = document.querySelector('.shop-grid');
     const resultCount = document.querySelector('.shop-result-count');

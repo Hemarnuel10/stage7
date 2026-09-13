@@ -9,8 +9,130 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-<body class="bg-[#F9F9FB]" data-page="contact">
-    <header id="site-header" class="px-4 py-4 md:px-10 lg:px-30 bg-white"></header>
+<body class="bg-white">
+    <header class="px-4 py-4 md:px-10 lg:px-30">
+
+        <div class="flex items-center justify-between">
+            <p class="font-extrabold text-2xl text-black">VĒRA</p>
+
+            <nav class="hidden md:flex items-center gap-10 lg:gap-20">
+
+                <ul class="flex items-center gap-10">
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+
+                <div class="flex items-center gap-4">
+
+                    <input type="search" placeholder="Search" class="w-40 rounded-full bg-[#EAEAEA] px-5 py-3 outline-none">
+
+                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex gap-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-count font-bold text-black"></span>
+                    </a>
+
+                </div>
+
+            </nav>
+
+            <button id="menu-btn" class="md:hidden">
+
+                <svg
+                    id="menu-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+
+                <svg
+                    id="close-icon"
+                    class="hidden"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden mt-6 border-t border-gray-200 pt-5">
+
+            <ul class="flex flex-col gap-5">
+
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./shop.html">Shop</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+
+                <li><input type="search" placeholder="Search" class="w-full rounded-full bg-[#EAEAEA] px-4 py-3 outline-none"></li>
+
+                <li>
+                    <a href="./cart.html" class="flex items-center gap-2">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+
+                        <span>Cart</span>
+
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </header>
 
     <main class="px-4 py-12 md:px-10 lg:px-30">
         <div class="max-w-lg mb-10">
@@ -69,7 +191,101 @@
         </div>
     </main>
 
-    <footer id="site-footer" class="px-4 py-12 bg-black text-white md:px-10 lg:px-30"></footer>
+    <footer class="px-4 py-12 bg-black text-white flex flex-col gap-10 md:px-10 lg:px-30 flex-row gap-10">
+        <div class="flex flex-col gap-4 md:flex-row gap-10">
+            <div>
+                <p class="font-extrabold text-2xl text-white ">VĒRA</p>
+                <p class="my-4 text-xs lg:w-70">Carefully curated items crafted with exceptional materials, designed to blend seamless utility with sophisticated timeless silhouettes.</p>
+
+                <div class="social-icons flex gap-4 pb-12 lg:pb-0">
+                    <!-- Instagram -->
+                    <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="20" fill="#292929"/>
+                        <rect x="12" y="12" width="16" height="16" rx="4"
+                            fill="none" stroke="white" stroke-width="1.8"/>
+                        <circle cx="20" cy="20" r="3.5"
+                                fill="none" stroke="white" stroke-width="1.8"/>
+                        <circle cx="24.5" cy="15.5" r="1" fill="white"/>
+                    </svg>
+
+                    <!-- Facebook -->
+                    <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="20" fill="#292929"/>
+                        <path
+                            d="M22 28v-7h2.5l.5-3h-3v-2c0-.9.3-1.5 1.5-1.5h1.5v-3.4
+                            c-.4-.1-1.2-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6V18H17v3h2.4v7H22Z"
+                            fill="white"
+                        />
+                    </svg>
+
+                    <!-- Twitter / X -->
+                    <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="20" fill="#292929"/>
+                        <path
+                            d="M12 14.2h3.8l2.8 3.7 3.4-3.7h1.9l-4.4 4.8
+                            4.8 6.8h-3.8l-3.1-4.2-3.8 4.2h-1.9l4.8-5.3-4.5-6.3Zm3.2 1.3
+                            6.8 9h1.2l-6.8-9h-1.2Z"
+                            fill="white"
+                        />
+                    </svg>
+
+                    <!-- YouTube -->
+                    <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="20" fill="#292929"/>
+                        <rect x="12" y="14" width="16" height="12" rx="3"
+                            fill="white"/>
+                        <path d="M18.5 17.2v5.6l4.5-2.8-4.5-2.8Z" fill="#292929"/>
+                    </svg>
+
+                </div>
+            </div>
+
+            <div class="text-xs">
+                <p class="font-bold">STAY IN THE LOOP</p>
+                <p class="my-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <form action="" class="flex flex-col md:flex-row gap-3 items-center">
+                    <input type="email"
+                        name=""
+                        id=""
+                        placeholder="Your email address"
+                        class="py-4 px-3 bg-[#2A2A2A] rounded-lg">
+                    <button type="submit" class="bg-[#9C6D53] w-full py-4 rounded-lg md:px-3">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-3 text-xs md:flex-row justify-between lg: gap-10">
+            <div>
+                <h3 class="font-bold pb-3">NAVIGATION</h3>
+                <ul class="flex flex-col gap-3">
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold pb-3">CUSTOMER SUPPORT</h3>
+                <ul class="flex flex-col gap-3">
+                    <li>FAQ</li>
+                    <li>Shipping & Delivery</li>
+                    <li>Returns</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold pb-3">CONTACT</h3>
+                <ul class="flex flex-col gap-3">
+                    <li>hemarnuel10@gmail.com</li>
+                    <li>+2347042403733</li>
+                    <li>4 Bango Street, Nigeria.</li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
 
     <script src="./js/index.js"></script>
     <script>

@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="styles/style.css">
     <script src="./js/index.js" defer></script>
-    <script src="./js/checkout.js" defer></script>
-    <title>Checkout</title>
+    <script src="./js/shop.js" defer></script>
+    <script src="./js/confirmation.js" defer></script>
+    <title>Confirmation</title>
 </head>
 <body class="bg-white">
     <header class="px-4 py-4 md:px-10 lg:px-30">
@@ -29,7 +30,7 @@
 
                     <input type="search" placeholder="Search" class="w-40 rounded-full bg-[#EAEAEA] px-5 py-3 outline-none">
 
-                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex">
+                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex gap-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -45,7 +46,7 @@
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
-                        <span class="cart-count font-semibold text-xs text-black"></span>
+                        <span class="cart-count font-bold text-black"></span>
                     </a>
 
                 </div>
@@ -98,7 +99,7 @@
 
             <ul class="flex flex-col gap-5">
 
-                <li><a href="./home.html">Home</a></li>
+               <li><a href="./home.html">Home</a></li>
                 <li><a href="./shop.html">Shop</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
@@ -135,127 +136,47 @@
 
     </header>
 
-    <main class="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-16 mx-3 md:m-10 lg:mx-32 my-12 py-3">
-
-        <div>
-            <section class="border bg-white border-[#EAEAEA] rounded-xl p-4 my-4">
-                <h2 class="text-base font-extrabold pb-6">Billing Information</h2>
-
-                <form id="billing-form" class="flex flex-col gap-4">
-                    <div class="flex w-full gap-3">
-                        <div class="flex flex-1 flex-col gap-2">
-                            <label for="first-name" class="text-[11px] font-bold">FIRST NAME</label>
-                            <input type="text"  
-                                name="first-name"
-                                id="first-name"
-                                required
-                                class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                        </div>
-                        
-                        <div class="flex flex-1 flex-col gap-2">
-                            <label for="last-name" class="text-[11px] font-bold">LAST NAME</label>
-                            <input type="text"  
-                                   name="last-name" 
-                                   id="last-name"
-                                   required
-                                   class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                        </div>
-                    </div>
-                
-                    <div class="flex flex-col gap-2">
-                        <label for="email" class="text-[11px] font-bold">EMAIL</label>
-                        <input type="email" name="email" id="email" required class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                    </div>
-                    
-                    <div class="flex flex-col gap-2">
-                        <label for="phone-number" class="text-[11px] font-bold">PHONE</label>
-                        <input type="tel" name="phone-number" id="phone-number" required class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                    </div>
-                    
-                    <div class="flex flex-col gap-2">
-                        <label for="address" class="text-[11px] font-bold">ADDRESS</label>
-                        <input type="text"  name="address" id="address" required class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                    </div>
-                </form>
-            </section>
-
-                <section class="bg-white border border-[#EAEAEA] rounded-xl p-4">
-                    <h3 class="text-base font-extrabold">Shipping Preference</h3>
-                    <div class="flex gap-2 items-center pt-3">
-                        <input type="checkbox" name="" id="same-as-billing" checked> 
-                        <label for="same-as-billing" class="font-semibold text-xs"> Same has billing address</label>
-                    </div>
-                </section>
-
-            <section class="bg-white border border-[#EAEAEA] rounded-xl p-4 my-4">
-                <form id="payment-form" class="flex flex-col gap-4">
-                    <h3 class="text-base font-extrabold">Payment Method</h3>
-
-                    <div class="flex flex-col gap-2">
-                        <label for="card-name" class="text-[11px] font-bold">CARD NAME</label>
-                        <input type="text" name="card-name" id="card-name" required class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                    </div>
-
-                    <div class="flex flex-col gap-2">
-                        <label for="card-number" class="text-[11px] font-bold">CARD NUMBER</label>
-                        <input type="text" name="card-number" id="card-number" inputmode="numeric" autocomplete="cc-number"  required=".... .... .... ...." class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                    </div>
-
-                    <div class="flex w-full gap-3">
-                        <div class="flex flex-1 flex-col gap-2">
-                            <label for="expiry-date" class="text-[11px] font-bold">EXPIRY</label>
-                            <input type="text" name="expiry-date" placeholder="MM/YY" maxlength="5" required id="expiry-date" class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                        </div>
-                            
-
-                        <div class="flex flex-1 flex-col gap-2">
-                                <label for="cvv" class="text-[11px] font-bold">CVV</label>
-                                <input type="text" inputmode="numeric" name="cvv" id="cvv" required class="ring ring-[#EAEAEA] px-4 rounded-lg h-10 w-full">
-                        </div>
-                </div>
-                
-                </form>
-            </section>
-        </div>
-        
-        <section class="bg-[white] flex flex-col gap-4 border border-[#EAEAEA] rounded-xl py-4 px-4 md:my-4 self-start">
-            <h3 class="text-base font-extrabold">Your Order</h3>
-            <div class="cart-items flex flex-col gap-4 justify-between">
-                
-            </div>
-
-            <hr class="mx-4">
-
-            <div class="order-summary px-4">
-
-            </div>
-            <button type="submit" class="place-order-btn bg-[#9C6D53] py-4 rounded-xl text-white text-[13px] cursor-pointer font-bold w-full">Place Order <span class="btn-total-price"></span></button>
-            
-            <p class="flex justify-center items-center py-3 gap-[10px] text-[#8E8E93]">
-                <svg xmlns="http://w3.org" viewBox="0 0 40 40" width="24" height="24" style="flex-shrink: 0;">
-                    <defs>
-                    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#EAEAEA" />
-                        <stop offset="100%" stop-color="#8E8E93" />
-                    </linearGradient>
-                    </defs>
-
-                    <!-- Shield & Lock Icon Group -->
-                    <g transform="translate(0, 3)">
-                    <!-- Shield Background -->
-                    <path d="M20 0 L36 5 C36 18 28 29 20 34 C12 29 4 18 4 5 Z" fill="url(#shieldGrad)" />
-                    <!-- Padlock Body -->
-                    <rect x="13" y="14" width="14" height="11" rx="2" fill="#8E8E93" />
-                    <!-- Padlock Shackle -->
-                    <path d="M16 14 V10 C16 8 24 8 24 10 V14" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" />
-                    <!-- Keyhole -->
-                    <circle cx="20" cy="18" r="1.5" fill="white" />
-                    <path d="M19.5 19.5 H20.5 V22 H19.5 Z" fill="white" />
-                    </g>
+    <main>
+        <section class="py-3 px-4">
+            <div class="flex flex-col gap-3 pt-10 items-center">
+                <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="42" height="42" fill="#E6F7F0" stroke="#10B981" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Outer Circle -->
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <!-- Checkmark inside document -->
+                    <polyline points="10 13.5 11 14.5 14 11.5"></polyline>
                 </svg>
-                <span class="text-[9px]">Your payment information is securely processed. We do not store full credit card details.</span>
-            </p>
 
+                <div>
+                    <h2 class="text-2xl font-extrabold text-center pb-2">Order Confirmed</h2>
+                    <p class="text-[#555555] text-xs text-center">Thank you for your order! We've sent a confirmation email with tracking information to your registered email address.</p>
+
+                </div>
+            </div>
+            
+            <div class="py-5 flex flex-col gap-3 md:flex-row justify-center">
+                <p class=" flex justify-between text-[#8E8E93] font-bold text-[11px] md:flex-col">ORDER NUMBER <span class="order-number text-black"></span></p>
+                <p class=" flex justify-between text-[#8E8E93] font-bold text-[11px] md:flex-col">ESTIMATED DELIVERY <span class="order-delivery text-black"></span></p>
+                <p class=" flex justify-between text-[#8E8E93] font-bold text-[11px] md:flex-col">SHIPPING METHOD <span class="text-black">Free Express Delivery</span></p>
+            </div>
+        </section>
+
+        <section class="border border-[#EAEAEA] rounded-xl p-4 my-3 mx-4 md:mx-26 my-10 lg:mx-80 my:16">
+            <h3 class="text-base font-extrabold">Receipt Summary</h3>
+            <div id="receipt-items">
+            
+            </div>
+            <hr class="my-3">
+
+            <div class="receipt-items flex flex-col gap-3">
+                <p class="flex justify-between text-[13px]">Subtotal <span class="receipt-subtotal font-semibold">$155.00</span></p>
+                <p class="flex justify-between text-[13px]">Shipping <span class="receipt-shipping font-semibold">$10.00</span></p>
+                <p class="flex justify-between text-[13px]">Tax <span class="receipt-tax font-semibold">$12.00</span></p>
+                <p class="flex justify-between text-[13px] text-emerald-500">Promo Discount<span class="receipt-discount font-semibold">$-15.00</span></p>
+                <hr>
+                <p class="flex justify-between  text-[15px] font-extrabold">Grand Total <span class="receipt-total font-extrabold">$162.00</span></p>
+            </div>
+
+            <a href="./shop.html"><button type="submit" class="bg-[#9C6D53] py-4 rounded-xl text-white text-[13px] font-bold w-full my-4">Continue Shopping</button></a>
         </section>
     </main>
 <footer class="px-4 py-12 bg-black text-white flex flex-col gap-10 md:px-10 lg:px-30 flex-row gap-10">
