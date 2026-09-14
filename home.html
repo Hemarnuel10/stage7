@@ -18,17 +18,17 @@
             <nav class="hidden md:flex items-center gap-10 lg:gap-20">
 
                 <ul class="flex items-center gap-10">
-                    <li><a href="./home.html">Home</a></li>
-                    <li><a href="./shop.html">Shop</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./home.html" class="hover:text-[#9C6D53]">Home</a></li>
+                    <li><a href="./shop.html" class="hover:text-[#9C6D53]">Shop</a></li>
+                    <li><a href="./about.html" class="hover:text-[#9C6D53]">About</a></li>
+                    <li><a href="./contact.html" class="hover:text-[#9C6D53]">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-4">
 
                     <input type="search" placeholder="Search" class="w-40 rounded-full bg-[#EAEAEA] px-5 py-3 outline-none">
 
-                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex">
+                    <a href="./cart.html" aria-label="Shopping cart" class="cart-icon flex gap-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -44,7 +44,7 @@
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
-                        <span class="cart-count font-semibold text-xs text-black"></span>
+                        <span class="cart-count font-bold text-black"></span>
                     </a>
 
                 </div>
@@ -55,6 +55,7 @@
 
                 <svg
                     id="menu-icon"
+                    class="cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -72,7 +73,7 @@
 
                 <svg
                     id="close-icon"
-                    class="hidden"
+                    class="hidden cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -97,10 +98,10 @@
 
             <ul class="flex flex-col gap-5">
 
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./shop.html">Shop</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./home.html" class="hover:text-[#9C6D53]">Home</a></li>
+                <li><a href="./shop.html" class="hover:text-[#9C6D53]">Shop</a></li>
+                <li><a href="./about.html" class="hover:text-[#9C6D53]">About</a></li>
+                <li><a href="./contact.html" class="hover:text-[#9C6D53]">Contact</a></li>
 
                 <li><input type="search" placeholder="Search" class="w-full rounded-full bg-[#EAEAEA] px-4 py-3 outline-none"></li>
 
@@ -123,7 +124,7 @@
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
 
-                        <span>Cart</span>
+                        <span class="cart-count font-bold text-black"></span>
 
                     </a>
                 </li>

@@ -17,6 +17,42 @@ function displayOrderSummary(){
 const placeOrderBtn = document.querySelector('.place-order-btn');
 console.log(!placeOrderBtn)
 
+function showFieldError(input, message){
+    clearFieldError(input);
+    input.classList.add("ring-red-400");
+    input.setAttribute("aria-invalid", "true");
+    const error = document.createElement("p");
+    error.className = "field-error text-[11px] text-red-500 mt-1";
+    error.textContent = message;
+    input.insertAdjacentElement("afterend", error);
+}
+
+function validateCheckoutForm(form){
+    let isValid = true;
+    const requiredFields = form.querySelectorAll('[required]');
+
+    requiredFields.forEach((field) => {
+        clearFieldError(field);
+        if (!field.value.trim()) {
+            showFieldError(field, "This field is required");
+            isValid = false;
+        }
+        else if (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value)) {
+            showFieldError(field, "Enter a valid email address.");
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+function clearFieldError(input){
+    input.classList.remove("ring-red-400");
+    input.removeAttribute("aria-invalid");
+    const next = input.nextElementSibling;
+    if (next && next.classList.contains("field-error")) next.remove();
+}
+
 function placeOrder(event){
     event.preventDefault();
     console.log("working");
@@ -54,7 +90,7 @@ function placeOrder(event){
     
     localStorage.setItem(FINAL_ORDER, JSON.stringify(order))
     saveCartItems([]); // clear the cart now that the order is placed
-    window.location.href = "./comfirmation.html";
+    window.location.href = "./confirmation.html";
 }
 
 

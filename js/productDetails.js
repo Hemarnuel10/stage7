@@ -76,15 +76,15 @@ function displayProductDetail(product){
         <div class="py-5">
             <p class="text-[12px] font-bold pb-4">QUANTITY</p>
             <div class="inline-flex items-center gap-6 border border-[#EAEAEA] rounded-xl px-4 py-2">
-                <button type="button" aria-label="Decrease quantity" class="text-gray-400 font-bold">-</button>
-                <span class="font-semibold">1</span>
-                <button type="button" aria-label="Increase quantity" class="text-gray-800 font-bold">+</button>
+                <button type="button" aria-label="Decrease quantity" class="qty-decrease cursor-pointer text-gray-800 font-bold">-</button>
+                <span class="qty-value font-semibold">1</span>
+                <button type="button" aria-label="Increase quantity" class="qty-increase cursor-pointer text-gray-800 font-bold">+</button>
             </div>
         </div>
 
         <div class="flex flex-col gap-2">
-            <button type="button" class="bg-[#9C6D53] text-white font-bold text-xs h-11 rounded-lg">Add to Cart</button>
-            <button type="button" class="bg-black text-white font-bold text-xs h-11 rounded-lg">Buy Now</button>
+            <button type="button" class="add-to-cart-btn bg-[#9C6D53] text-white cursor-pointer font-bold text-xs h-11 rounded-lg hover:opacity-70">Add to Cart</button>
+            <button type="button" class="buy-now-btn bg-black text-white font-bold text-xs h-11 cursor-pointer rounded-lg hover:opacity-70">Buy Now</button>
         </div>
 
         <div class="pt-6">
@@ -101,6 +101,37 @@ function displayProductDetail(product){
                 Free express shipping on orders over $150
             </p>
         </div>`
+
+            // Quantity stepper
+    let selectedQuantity = 1;
+    const qtyValueEl = productContainer.querySelector(".qty-value");
+    const decreaseBtn = productContainer.querySelector(".qty-decrease");
+    const increaseBtn = productContainer.querySelector(".qty-increase");
+
+    decreaseBtn.addEventListener("click", () => {
+        if (selectedQuantity > 1) {
+            selectedQuantity--;
+            qtyValueEl.textContent = selectedQuantity;
+        }
+    });
+
+    increaseBtn.addEventListener("click", () => {
+        selectedQuantity++;
+        qtyValueEl.textContent = selectedQuantity;
+    });
+
+    // Add to Cart / Buy Now
+    const addToCartBtn = productContainer.querySelector(".add-to-cart-btn");
+    const buyNowBtn = productContainer.querySelector(".buy-now-btn");
+
+    addToCartBtn.addEventListener("click", () => {
+        addToCart({ ...product, quantity: selectedQuantity });
+    });
+
+    buyNowBtn.addEventListener("click", () => {
+        addToCart({ ...product, quantity: selectedQuantity });
+        window.location.href = "./checkout.html";
+    });
 }
 
 function displayProductimage(product){

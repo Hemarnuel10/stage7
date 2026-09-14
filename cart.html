@@ -18,10 +18,10 @@
             <nav class="hidden md:flex items-center gap-10 lg:gap-20">
 
                 <ul class="flex items-center gap-10">
-                    <li><a href="./home.html">Home</a></li>
-                    <li><a href="./shop.html">Shop</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./home.html" class="hover:text-[#9C6D53]">Home</a></li>
+                    <li><a href="./shop.html" class="hover:text-[#9C6D53]">Shop</a></li>
+                    <li><a href="./about.html" class="hover:text-[#9C6D53]">About</a></li>
+                    <li><a href="./contact.html" class="hover:text-[#9C6D53]">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-4">
@@ -55,6 +55,7 @@
 
                 <svg
                     id="menu-icon"
+                    class="cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -72,7 +73,7 @@
 
                 <svg
                     id="close-icon"
-                    class="hidden"
+                    class="hidden cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -97,15 +98,15 @@
 
             <ul class="flex flex-col gap-5">
 
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./shop.html">Shop</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./home.html" class="hover:text-[#9C6D53]">Home</a></li>
+                <li><a href="./shop.html" class="hover:text-[#9C6D53]">Shop</a></li>
+                <li><a href="./about.html" class="hover:text-[#9C6D53]">About</a></li>
+                <li><a href="./contact.html" class="hover:text-[#9C6D53]">Contact</a></li>
 
                 <li><input type="search" placeholder="Search" class="w-full rounded-full bg-[#EAEAEA] px-4 py-3 outline-none"></li>
 
                 <li>
-                    <a href="" class="flex items-center gap-2">
+                    <a href="./cart.html" class="flex items-center gap-2">
 
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +124,7 @@
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
 
-                        <span>Cart</span>
+                        <span class="cart-count font-bold text-black"></span>
 
                     </a>
                 </li>
@@ -148,7 +149,7 @@
             </section>
 
             <div class="py-4 px-2">
-                <a class="font-semibold text-xs underline">Continue Shopping</a>
+                <a href="./shop.html" class="font-semibold text-xs underline">Continue Shopping</a>
             </div>
         </div>
 
@@ -167,10 +168,10 @@
                    placeholder="Enter promo code" 
                    class="grow bg-[#F9F9FB] py-3 border border-[#8E8E93] rounded-lg px-3 text-xs text-[#8E8E93]">
             
-            <button type="submit" id="apply-code" class="px-4 py-3 bg-[#9C6D53] text-[13px] font-bold rounded-lg cursor-pointer">Apply</button>
+            <button type="submit" id="apply-code" class="px-4 py-3 bg-[#9C6D53] text-[13px] text-white font-bold rounded-lg cursor-pointer hover:bg-[#8a5d45]">Apply</button>
 
             </div>
-            <a href="./checkout.html"><button type="submit" class="proceed-to-checkout bg-[#9C6D53] py-4 rounded-xl cursor-pointer text-white text-[13px] font-bold w-full">Proceed to Checkout</button></a>
+            <a href="./checkout.html"><button type="submit" class="proceed-to-checkout bg-[#9C6D53] py-4 rounded-xl cursor-pointer text-white text-[13px] font-bold w-full hover:bg-[#8a5d45]">Proceed to Checkout</button></a>
  
 
 
@@ -259,7 +260,7 @@
                         id=""
                         placeholder="Your email address"
                         class="py-4 px-3 bg-[#2A2A2A] rounded-lg">
-                    <button type="submit" class="bg-[#9C6D53] w-full py-4 rounded-lg md:px-3">Subscribe</button>
+                    <button type="submit" class="bg-[#9C6D53] cursor-pointer w-full py-4 rounded-lg md:px-3">Subscribe</button>
                 </form>
             </div>
         </div>

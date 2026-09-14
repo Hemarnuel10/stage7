@@ -1,3 +1,19 @@
+const openMenu = document.querySelector('#menu-icon');
+const closeMenu = document.querySelector('#close-icon');
+const mobileMenu = document.querySelector('#mobile-menu');
+
+openMenu.addEventListener("click", () => {
+  openMenu.classList.add('hidden');
+  closeMenu.classList.remove('hidden');
+  mobileMenu.classList.remove('hidden');
+});
+
+closeMenu.addEventListener("click", () => {
+  closeMenu.classList.add('hidden');
+  openMenu.classList.remove('hidden');
+  mobileMenu.classList.add('hidden');
+});
+
 const API_URL = 'https://fakestoreapi.com/products';
 const PROMO_KEY = "promoCode";
 const CART_STORAGE = "cart"
@@ -27,19 +43,19 @@ function showFeaturedProduct(products) {
       const productCard = document.createElement('article')
       productCard.classList.add('bg-white', 'border-2', 'border-[#EAEAEA]', 'rounded-2xl')
       productCard.innerHTML = `
-          <img src="${product.image}" alt="${product.title}" class="rounded-t-2xl max-h-48 object-contain w-full md:aspect-5/4">
-          <div class="m-3 flex gap-1 flex-col">
-              <p class="font-semibold text-[10px] text-gray-400">${product.category.toUpperCase()}</p>
-              <p class="font-semibold text-[13px]">${product.title.slice(0, 30)}</p>
-              <p class="font-bold text-[13px]">$<span class="product-price">${product.price.toFixed(2)}</span></p>
-              <button class="add-to-cart-btn bg-black text-white w-full text-xs font-bold h-9 rounded-md cursor-pointer hover:bg-gray-800">Add to Cart</button>
-          </div>
-      `
+                <a href="./product.html?id=${product.id}" class="block">
+                    <img src="${product.image}" alt="${product.title}" class="rounded-t-2xl h-40 w-full md:aspect-5/4 object-contain bg-white p-4" loading="lazy">
+                </a>
+                <div class="m-3 flex gap-1 flex-col grow">
+                    <p class="font-semibold text-[10px] text-gray-400">${product.category.toUpperCase()}</p>
+                    <a href="./product.html?id=${product.id}" class="font-semibold text-[13px] hover:text-[#9C6D53]">${product.title.slice(0, 40)}${product.title.length > 40 ? "…" : ""}</a>
+                    <p class="font-bold text-[13px] mt-auto">$<span class="product-price">${product.price.toFixed(2)}</span></p>
+                    <button data-product-id="${product.id}" class="add-to-cart-btn bg-black text-white w-full text-xs font-bold h-9 rounded-md cursor-pointer hover:bg-gray-800 mt-2">Add to Cart</button>
+                </div>`
+                    
       featuredProduct.appendChild(productCard);
 
-      productCard.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-        addToCart(product);
-      });
+      addToCartProcess(product);
     });
   };
 };
@@ -143,10 +159,6 @@ function calculateTotalCost(){
 function displayCartItems() {
   updateCartCountBadge()
   const cartContainer = document.querySelector('.cart-items');
-  // const cartCount = document.querySelector('.cart-count');
-  // if (cartCount) {
-  //   cartCount.textContent = `(${cartItems.length})`;
-  // }
 
   if (cartContainer) {
     const cartItems = getCartItems();
@@ -194,7 +206,7 @@ function displayCartItems() {
               </div>
             </div>
             <div class="flex flex-col gap-6">
-              <button type="button" class="remove-cart-item self-end" aria-label="Remove item">
+              <button type="button" class="remove-cart-item self-end cursor-pointer" aria-label="Remove item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="9"></circle>
                   <line x1="15" y1="9" x2="9" y2="15"></line>
@@ -202,9 +214,9 @@ function displayCartItems() {
                 </svg>
               </button>
               <div class="inline-flex text-[11px] items-center gap-4 border border-[#EAEAEA] rounded-xl px-4 py-2">
-                <button type="button" class="decrease-cart-item text-gray-400 font-bold">-</button>
+                <button type="button" class="decrease-cart-item cursor-pointer text-gray-800 font-bold">-</button>
                 <span class="font-semibold">${item.quantity}</span>
-                <button type="button" class="increase-cart-item text-gray-800 font-bold">+</button>
+                <button type="button" class="increase-cart-item cursor-pointer text-gray-800 font-bold">+</button>
               </div>
             </div>
           </div>
@@ -238,25 +250,6 @@ function displayCartItems() {
     findTotalPrice();
   }
 }
-
-
-function applyPromoCode() {
-  const promoCodeInput = document.querySelector('#promo-code');
-  const applyButton = document.querySelector('#apply-code');
-
-  applyButton.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    if (promoCodeInput) {
-      promoCodeInput.addEventListener('input', () => {
-        const promoCode = promoCodeInput.value.trim();
-        localStorage.setItem(PROMO_KEY, promoCode);
-        findTotalPrice();
-      });
-    }
-  });
-};
-
 
 function findTotalPrice() {
   const { subtotal, discount, shipping, tax, total } = calculateTotalCost();
@@ -303,41 +296,57 @@ function initPromoCode() {
   }
 }
 
-// VALIDATE FORM
+function addToCartProcess(product){
+  
+  document.addEventListener('click', (event) => {
 
-function showFieldError(input, message) {
-  clearFieldError(input);
-  input.classList.add("ring-red-400");
-  input.setAttribute("aria-invalid", "true");
-  const error = document.createElement("p");
-  error.className = "field-error text-[11px] text-red-500 mt-1";
-  error.textContent = message;
-  input.insertAdjacentElement("afterend", error);
-}
+    const button = event.target.closest('.add-to-cart-btn');
+    if (!button) return;
+    
+    addToCart(product);
 
-function clearFieldError(input) {
-  input.classList.remove("ring-red-400");
-  input.removeAttribute("aria-invalid");
-  const next = input.nextElementSibling;
-  if (next && next.classList.contains("field-error")) next.remove();
-}
+    const originalText = "Add to Cart";
+    button.textContent = "Added to Cart ✔";
+    button.disabled = true;
 
-function validateContactForm(form) {
-  let isValid = true;
-  form.querySelectorAll("[required]").forEach((field) => {
-    clearFieldError(field);
-    if (!field.value.trim()) {
-      showFieldError(field, "This field is required");
-      isValid = false;
-    } else if (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value)) {
-      showFieldError(field, "Enter a valid email address.");
-      isValid = false;
-    }
+    const toast = document.createElement("div");
+    toast.textContent = "🛒 Item added to cart!";
+    
+    toast.className = "fixed top-5 right-5 bg-gray-800 text-white px-6 py-3 rounded-lg font-sans shadow-md transition-opacity duration-300 z-[1000]";
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.disabled = false;
+      
+      // Smoothly fade out before deleting
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300); 
+    }, 2000);
   });
-  return isValid;
+
 }
+
+
+function initSearch() {
+  const searchInputs = document.querySelectorAll('input[type="search"]');
+
+  searchInputs.forEach((input) => {
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const query = input.value.trim();
+        if (query) {
+          window.location.href = `./shop.html?search=${encodeURIComponent(query)}`;
+        }
+      }
+    });
+  });
+}
+
 
 fetchFeaturedProduct();
 displayCartItems();
 initPromoCode();
+initSearch();
 console.log(findTotalPrice())

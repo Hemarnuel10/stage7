@@ -19,10 +19,10 @@
             <nav class="hidden md:flex items-center gap-10 lg:gap-20">
 
                 <ul class="flex items-center gap-10">
-                    <li><a href="./home.html">Home</a></li>
-                    <li><a href="./shop.html">Shop</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./home.html" class="hover:text-[#9C6D53]">Home</a></li>
+                    <li><a href="./shop.html" class="hover:text-[#9C6D53]">Shop</a></li>
+                    <li><a href="./about.html" class="hover:text-[#9C6D53]">About</a></li>
+                    <li><a href="./contact.html" class="hover:text-[#9C6D53]">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-4">
@@ -56,6 +56,7 @@
 
                 <svg
                     id="menu-icon"
+                    class="cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -73,7 +74,7 @@
 
                 <svg
                     id="close-icon"
-                    class="hidden"
+                    class="hidden cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -98,10 +99,10 @@
 
             <ul class="flex flex-col gap-5">
 
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./shop.html">Shop</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./home.html" class="hover:text-[#9C6D53]">Home</a></li>
+                <li><a href="./shop.html" class="hover:text-[#9C6D53]">Shop</a></li>
+                <li><a href="./about.html" class="hover:text-[#9C6D53]">About</a></li>
+                <li><a href="./contact.html" class="hover:text-[#9C6D53]">Contact</a></li>
 
                 <li><input type="search" placeholder="Search" class="w-full rounded-full bg-[#EAEAEA] px-4 py-3 outline-none"></li>
 
@@ -124,7 +125,7 @@
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
 
-                        <span>Cart</span>
+                        <span class="cart-count font-bold text-black"></span>
 
                     </a>
                 </li>
@@ -201,12 +202,12 @@
             <div class="text-xs">
                 <p class="font-bold">STAY IN THE LOOP</p>
                 <p class="my-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
-                <form action="" class="flex flex-col md:flex-row gap-3 items-center">
+                <form class="flex flex-col md:flex-row gap-3 items-center">
                     <input type="email"
-                        name=""
-                        id=""
+                        name="email"
+                        id="email"
                         placeholder="Your email address"
-                        class="py-4 px-3 bg-[#2A2A2A] rounded-lg">
+                        class="py-4 px-3 bg-[#2A2A2A] w-full rounded-lg">
                     <button type="submit" class="bg-[#9C6D53] w-full py-4 rounded-lg md:px-3">Subscribe</button>
                 </form>
             </div>

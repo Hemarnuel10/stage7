@@ -18,6 +18,15 @@ async function displayShopProducts() {
     const shopGrid = document.querySelector('.shop-grid');
     const resultCount = document.querySelector('.shop-result-count');
 
+     const params = new URLSearchParams(window.location.search);
+    const searchTerm = (params.get("search") || "").trim().toLowerCase();
+
+    if (searchTerm) {
+        document.querySelectorAll('input[type="search"]').forEach((input) => {
+            input.value = params.get("search");
+        });
+    }
+
     try {
         const products = (typeof ALL_PRODUCT !== 'undefined' && ALL_PRODUCT.length)
             ? ALL_PRODUCT
@@ -77,7 +86,7 @@ async function displayShopProducts() {
                         const productId = Number(product.dataset.productId);
                         const findProduct = filtered.find(p => p.id === productId)
                         console.log(findProduct)
-                        addToCart(findProduct);
+                        addToCartProcess(findProduct);
                         console.log("added")
                     });
                 });
