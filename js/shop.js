@@ -12,13 +12,14 @@ async function fetchProducts() {
     }
 }
 
+let ALL_PRODUCT = [];
+
 async function displayShopProducts() {
-    let ALL_PRODUCT;
     const filterBar = document.querySelector('.category-filters');
     const shopGrid = document.querySelector('.shop-grid');
     const resultCount = document.querySelector('.shop-result-count');
 
-     const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     const searchTerm = (params.get("search") || "").trim().toLowerCase();
 
     if (searchTerm) {
@@ -32,6 +33,7 @@ async function displayShopProducts() {
             ? ALL_PRODUCT
             : await fetchProducts();
         ALL_PRODUCT = products;
+        console.log(products)
         console.log("still working1")
         const categories = ["all", ...new Set(products.map((product) => product.category))];
         
@@ -79,17 +81,6 @@ async function displayShopProducts() {
                 `).join("");
 
                 if (resultCount) resultCount.textContent = `${filtered.length} item${filtered.length === 1 ? "" : "s"}`;
-                
-                document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                    btn.addEventListener('click', (event) => {
-                        const product = event.currentTarget.closest('.product-card');
-                        const productId = Number(product.dataset.productId);
-                        const findProduct = filtered.find(p => p.id === productId)
-                        console.log(findProduct)
-                        addToCartProcess(findProduct);
-                        console.log("added")
-                    });
-                });
             }
 
             displayProducts("all");
@@ -102,5 +93,30 @@ async function displayShopProducts() {
 
 displayShopProducts();
 
-// display individual products
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('.add-to-cart-btn');
+  if (!button) return;
+
+  const productId = Number(button.dataset.productId);
+  const product = ALL_PRODUCT.find(p => p.id === productId); // ✅ full list, not `filtered`
+  if (!product) return;
+
+  addToCart(product);
+
+  const originalText = "Add to Cart";
+  button.textContent = "Added to Cart ✔";
+  button.disabled = true;
+
+  const toast = document.createElement("div");
+  toast.textContent = "🛒 Item added to cart!";
+  toast.className = "fixed top-5 right-5 bg-gray-800 text-white px-6 py-3 rounded-lg font-sans shadow-md transition-opacity duration-300 z-[1000]";
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    button.textContent = originalText;
+    button.disabled = false;
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+});
 

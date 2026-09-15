@@ -31,15 +31,17 @@ function saveCartItems(cartItems) {
   updateCartCountBadge()
 }
 
+let featuredProducts = [];
+
 function showFeaturedProduct(products) {
   const featuredProduct = document.querySelector('.featured-product');
-  const randomProducts = products
+  featuredProducts = products
     .sort(() => Math.random() - 0.5)
     .slice(0, 4);
 
   if(featuredProduct) {
     featuredProduct.innerHTML = "";
-    randomProducts.forEach((product) => {
+    featuredProducts.forEach((product) => {
       const productCard = document.createElement('article')
       productCard.classList.add('bg-white', 'border-2', 'border-[#EAEAEA]', 'rounded-2xl')
       productCard.innerHTML = `
@@ -54,8 +56,6 @@ function showFeaturedProduct(products) {
                 </div>`
                     
       featuredProduct.appendChild(productCard);
-
-      addToCartProcess(product);
     });
   };
 };
@@ -296,36 +296,41 @@ function initPromoCode() {
   }
 }
 
-function addToCartProcess(product){
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('.add-to-cart-btn');
+  if (!button) return;
+
+  const productId = Number(button.dataset.productId);
+  console.log(productId);
+
+  console.log(featuredProducts);
   
-  document.addEventListener('click', (event) => {
+  const product = featuredProducts.find(p => p.id === productId);
+  console.log(product);
+  if (!product) return;
+  
+  addToCart(product);
 
-    const button = event.target.closest('.add-to-cart-btn');
-    if (!button) return;
+  const originalText = "Add to Cart";
+  button.textContent = "Added to Cart ✔";
+  button.disabled = true;
+
+  const toast = document.createElement("div");
+  toast.textContent = "🛒 Item added to cart!";
+  
+  toast.className = "fixed top-5 right-5 bg-gray-800 text-white px-6 py-3 rounded-lg font-sans shadow-md transition-opacity duration-300 z-[1000]";
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    button.textContent = originalText;
+    button.disabled = false;
     
-    addToCart(product);
-
-    const originalText = "Add to Cart";
-    button.textContent = "Added to Cart ✔";
-    button.disabled = true;
-
-    const toast = document.createElement("div");
-    toast.textContent = "🛒 Item added to cart!";
-    
-    toast.className = "fixed top-5 right-5 bg-gray-800 text-white px-6 py-3 rounded-lg font-sans shadow-md transition-opacity duration-300 z-[1000]";
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-      button.textContent = originalText;
-      button.disabled = false;
-      
-      // Smoothly fade out before deleting
-      toast.style.opacity = '0';
-      setTimeout(() => toast.remove(), 300); 
-    }, 2000);
-  });
-
-}
+    // Smoothly fade out before deleting
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300); 
+  }, 2000);
+});
 
 
 function initSearch() {
