@@ -2,7 +2,7 @@
 
 A responsive, multi-page e-commerce storefront built with HTML, Tailwind CSS and vanilla JavaScript. Products come from the [Fake Store API](https://fakestoreapi.com), and the cart, promo codes and order data are stored in the browser with `localStorage`, so the whole shopping flow works without a backend.
 
-**Live demo:** [add your deployed link here](https://hemarnuel10.github.io/stage7/)
+**Live demo:** https://stage7-iota.vercel.app/
 
 ## Features
 
