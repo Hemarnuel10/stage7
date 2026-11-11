@@ -62,6 +62,6 @@ set(".receipt-total", `$${order.total.toFixed(2)}`);
 const continueBtn = document.querySelector("#continue-shopping-btn");
 if (continueBtn) {
 continueBtn.addEventListener("click", () => {
-    window.location.href = "./home.html";
+    window.location.href = "./index.html";
 });
 }

@@ -52,7 +52,7 @@ function showFeaturedProduct(products) {
                     <p class="font-semibold text-[10px] text-gray-400">${product.category.toUpperCase()}</p>
                     <a href="./product.html?id=${product.id}" class="font-semibold text-[13px] hover:text-[#9C6D53]">${product.title.slice(0, 40)}${product.title.length > 40 ? "…" : ""}</a>
                     <p class="font-bold text-[13px] mt-auto">$<span class="product-price">${product.price.toFixed(2)}</span></p>
-                    <button data-product-id="${product.id}" class="add-to-cart-btn bg-black text-white w-full text-xs font-bold h-9 rounded-md cursor-pointer hover:bg-gray-800 mt-2">Add to Cart</button>
+                    <button data-product-id="${product.id}" class="add-to-cart-btn bg-black text-white w-full text-xs mt-auto font-bold h-9 rounded-md cursor-pointer hover:bg-gray-800 mt-2">Add to Cart</button>
                 </div>`
                     
       featuredProduct.appendChild(productCard);
